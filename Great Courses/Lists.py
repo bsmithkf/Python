@@ -1,3 +1,4 @@
+# Comments out one line
 # FirstAmount = 3.50
 # SecondAmount = 5.00
 # ThirdAmount = 10.00
