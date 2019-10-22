@@ -1,0 +1,76 @@
+########Read in Data########
+#Open File
+file_name = input("Enter the name of file: ")
+
+
+#Read lines from File
+data = open(file_name,'r')
+
+
+#Put data into list
+datalist = []
+for line in data:
+    date,max,min,rain = (line.split(','))
+    low_temp = int(min)
+    high_temp = int(max)
+    rainfall = float(rain)
+    m, d, yr = date.split('/')
+    month = int(m)
+    day = int(d)
+    year = int(yr)
+    datalist.append([day,month,year,low_temp,high_temp,rainfall])
+# print(datalist)
+
+#Close File
+data.close()
+
+
+##########Analyze Data#############
+## Get date
+special_month = int(input('Enter special date month: '))
+special_day = int(input('Enter special day: '))
+
+#Get data from special date
+good_date =[]
+for i in datalist:
+    if i[0] == special_day and i[1] == special_month:
+        good_date.append([i[2],i[3],i[4],i[5]])
+print(good_date)
+
+#Find High temp
+high = 0
+for i in good_date:
+    if i[2]>high:
+        high = i[2]
+print('High temp: ',high)
+
+#Find Low Temp
+low = 120
+for i in good_date:
+    if i[1] < low:
+        low = i[1]
+print('Low temp: ', low)
+
+#Find Average Low Temp
+low_sum = 0
+low_count = 0
+for i in good_date:
+    low_count+=1
+    low_sum+=i[1]
+low_average = low_sum/low_count
+print('Low avg temp: ', low_average)
+
+#Find Average High Temp
+high_sum = 0
+high_count = 0
+for i in good_date:
+    high_count+=1
+    high_sum+=i[2]
+high_average = high_sum/high_count
+print('High avg temp: ', high_average)
+
+
+
+
+
+#Present Data
